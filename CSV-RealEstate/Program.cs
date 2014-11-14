@@ -57,7 +57,13 @@ namespace CSV_RealEstate
         public int Beds { get; set; }
         public int Baths { get; set; }
         public int SQ_FT { get; set; }
-        public int Type { get; set; }
+        private RealEstateType _type;
+
+        public RealEstateType Type
+        {
+            get { return _type; }
+            set { if (value == 0) { _type = RealEstateType.Lot; } else { _type = value; } }
+        }
         public string SaleDate { get; set; }
         public int Price { get; set; }
         public double Latitude { get; set; }
@@ -65,7 +71,10 @@ namespace CSV_RealEstate
 
         //The constructor will take a single string arguement.  This string will be one line of the real estate data.
         // Inside the constructor, you will seperate the values into their corrosponding properties, and do the necessary conversions
+        public RealEstateData(string lineInput)
+        {
 
+        }
         //When computing the RealEstateType, if the square footage is 0, then it is of the Lot type, otherwise, use the string
         // value of the "Type" column to determine its corresponding enumeration type.
     }
