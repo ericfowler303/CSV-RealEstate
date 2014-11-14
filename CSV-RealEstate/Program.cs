@@ -50,6 +50,18 @@ namespace CSV_RealEstate
     public class RealEstateData
     {
         //Create properties, using the correct data types (not all are strings) for all columns of the CSV
+        public string Street { get; set; }
+        public string City { get; set; }
+        public int Zip { get; set; }
+        public string State { get; set; }
+        public int Beds { get; set; }
+        public int Baths { get; set; }
+        public int SQ_FT { get; set; }
+        public int Type { get; set; }
+        public string SaleDate { get; set; }
+        public int Price { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         //The constructor will take a single string arguement.  This string will be one line of the real estate data.
         // Inside the constructor, you will seperate the values into their corrosponding properties, and do the necessary conversions
