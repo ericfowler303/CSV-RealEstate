@@ -41,6 +41,10 @@ namespace CSV_RealEstate
     public enum RealEstateType
     {
         //fill in with enum types: Residential, MultiFamily, Condo, Lot
+        Residential,
+        MultiFamily,
+        Condo,
+        Lot
     }
 
     public class RealEstateData
