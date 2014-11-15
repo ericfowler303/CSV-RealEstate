@@ -41,10 +41,14 @@ namespace CSV_RealEstate
             Console.WriteLine(realEstateDataList.Where(x=>x.SaleDate.DayOfWeek==System.DayOfWeek.Wednesday).Count());
             //Display the average number of bedrooms for a residential home in Sacramento when the 
             // price is greater than 300000, round to 2 decimal points
-            
+            Console.WriteLine(Math.Round(realEstateDataList.Where(x => x.City.ToLower() == "sacramento").Where(y => y.Price > 300000).Average(z=>z.Beds),2));
             //Extra Credit:
             //Display top 5 cities and the number of homes sold (using the GroupBy extension)
-
+            var topCityList = realEstateDataList.GroupBy(x => x.City).Select(x => new { CityName = x.Key, CityCount = x.Count() }).OrderByDescending(x => x.CityCount).Take(5);
+            foreach (var dataItem in topCityList)
+            {
+                Console.WriteLine("{0} : {1}", dataItem.CityName,dataItem.CityCount);
+            }
 
             // keep the console open
             Console.ReadLine();
