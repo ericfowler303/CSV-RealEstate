@@ -36,9 +36,9 @@ namespace CSV_RealEstate
             //Display the average sale price of a lot in Sacramento, display in dollars
             Console.WriteLine(realEstateDataList.Where(x=>x.City.ToLower()=="sacramento").Average(y=>y.Price).ToString("C2"));
             //Display the average price per square foot for a condo in Sacramento, display in dollars
-
+            Console.WriteLine((realEstateDataList.Where(x => x.City.ToLower() == "sacramento").Average(y => y.Price) / realEstateDataList.Where(x => x.City.ToLower() == "sacramento").Average(y => y.SQ_FT)).ToString("C2"));
             //Display the number of all sales that were completed on a Wednesday
-
+            Console.WriteLine(realEstateDataList.Where(x=>x.SaleDate.DayOfWeek==System.DayOfWeek.Wednesday).Count());
             //Display the average number of bedrooms for a residential home in Sacramento when the 
             // price is greater than 300000, round to 2 decimal points
             
@@ -78,7 +78,7 @@ namespace CSV_RealEstate
         }
         
         public RealEstateType Type { get; set; }
-        public string SaleDate { get; set; }
+        public DateTime SaleDate { get; set; }
         public int Price { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
@@ -102,7 +102,7 @@ namespace CSV_RealEstate
                 case "Multi-Family": this.Type = RealEstateType.MultiFamily; break;
                 default: this.Type = RealEstateType.Lot; break;
             }
-            this.SaleDate = realEstateLine[8];
+            this.SaleDate = DateTime.Parse(realEstateLine[8]);
             this.Price = int.Parse(realEstateLine[9]);
             this.Latitude = double.Parse(realEstateLine[10]);
             this.Longitude = double.Parse(realEstateLine[11]);
