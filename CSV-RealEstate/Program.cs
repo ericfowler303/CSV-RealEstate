@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,27 @@ namespace CSV_RealEstate
             List<RealEstateData> realEstateDataList = new List<RealEstateData>();
             //read in the realestatedata.csv file.  As you process each row, you'll add a new 
             // RealEstateData object to the list for each row of the document, excluding the first.
-
+            using (StreamReader reader = new StreamReader("realestatedata.csv"))
+            {                    
+                // Get and don't use the first line
+                string firstline = reader.ReadLine();
+                // Loop through the rest of the lines
+                while(!reader.EndOfStream) {
+                    realEstateDataList.Add(new RealEstateData(reader.ReadLine()));
+                }               
+            }
+         
 
             //Display the average square footage of a Condo sold in the city of Sacramento, 
             // round to 2 decimal points
-
+            Console.WriteLine(Math.Round(realEstateDataList.Average(x=>x.SQ_FT),2));
             //Display the total sales of all residential homes in Elk Grove, display in dollars
-
+            Console.WriteLine(realEstateDataList.Where(x=>x.City.ToLower()=="elk grove").Sum(y=>y.Price).ToString("C0"));
             //Display the total number of residential homes sold in the following  
             // zip codes: 95842, 95825, 95815
-
+            Console.WriteLine(realEstateDataList.Where(x=>x.Type==RealEstateType.Residential).Where(y=>y.Zip==95842||y.Zip==95825||y.Zip==95815).Count());
             //Display the average sale price of a lot in Sacramento, display in dollars
-
+            Console.WriteLine(realEstateDataList.Where(x=>x.City.ToLower()=="sacramento").Average(y=>y.Price).ToString("C2"));
             //Display the average price per square foot for a condo in Sacramento, display in dollars
 
             //Display the number of all sales that were completed on a Wednesday
@@ -35,6 +45,9 @@ namespace CSV_RealEstate
             //Extra Credit:
             //Display top 5 cities and the number of homes sold (using the GroupBy extension)
 
+
+            // keep the console open
+            Console.ReadLine();
         }
     }
 
@@ -56,14 +69,15 @@ namespace CSV_RealEstate
         public string State { get; set; }
         public int Beds { get; set; }
         public int Baths { get; set; }
-        public int SQ_FT { get; set; }
-        private RealEstateType _type;
+        private int _sqft;
 
-        public RealEstateType Type
+        public int SQ_FT
         {
-            get { return _type; }
-            set { if (value == 0) { _type = RealEstateType.Lot; } else { _type = value; } }
+            get { return _sqft; }
+            set { if (value == 0) { this.Type = RealEstateType.Lot; } _sqft = value; }
         }
+        
+        public RealEstateType Type { get; set; }
         public string SaleDate { get; set; }
         public int Price { get; set; }
         public double Latitude { get; set; }
@@ -73,7 +87,25 @@ namespace CSV_RealEstate
         // Inside the constructor, you will seperate the values into their corrosponding properties, and do the necessary conversions
         public RealEstateData(string lineInput)
         {
-
+            string[] realEstateLine = lineInput.Split(',');
+            this.Street = realEstateLine[0];
+            this.City = realEstateLine[1];
+            this.Zip = int.Parse(realEstateLine[2]);
+            this.State = realEstateLine[3];
+            this.Beds = int.Parse(realEstateLine[4]);
+            this.Baths = int.Parse(realEstateLine[5]);
+            this.SQ_FT = int.Parse(realEstateLine[6]);
+            switch (realEstateLine[7])
+            {
+                case "Residential": this.Type = RealEstateType.Residential; break;
+                case "Condo": this.Type = RealEstateType.Condo; break;
+                case "Multi-Family": this.Type = RealEstateType.MultiFamily; break;
+                default: this.Type = RealEstateType.Lot; break;
+            }
+            this.SaleDate = realEstateLine[8];
+            this.Price = int.Parse(realEstateLine[9]);
+            this.Latitude = double.Parse(realEstateLine[10]);
+            this.Longitude = double.Parse(realEstateLine[11]);
         }
         //When computing the RealEstateType, if the square footage is 0, then it is of the Lot type, otherwise, use the string
         // value of the "Type" column to determine its corresponding enumeration type.

@@ -6,3 +6,15 @@ C:\Users\dustin\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\obj\Debug\CSV-Rea
 C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\CSV-RealEstate.exe.config
 C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\obj\Debug\CSV-RealEstate.exe
 C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\obj\Debug\CSV-RealEstate.pdb
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\CSV-RealEstate.exe
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\CSV-RealEstate.pdb
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\EntityFramework.dll
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\System.Data.SQLite.dll
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\EntityFramework.xml
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\System.Data.SQLite.xml
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\obj\Debug\CSV-RealEstate.csprojResolveAssemblyReference.cache
+C:\Users\Technologist\Documents\GitHub\CSV-RealEstate\CSV-RealEstate\bin\Debug\realestatedata.csv
